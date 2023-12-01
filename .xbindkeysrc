@@ -1,0 +1,7 @@
+# Mapping BACK to mousewheel left on old Logitech
+"xdotool key Alt_L+Left"
+m:0x0 + b:6
+
+# Mapping FORWARD to mousewheel right on old Logitech
+"xdotool key Alt_L+Right"
+m:0x0 + b:7
