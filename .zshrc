@@ -47,7 +47,7 @@ alias kbatt='upower -i /org/freedesktop/UPower/devices/battery_hid_dco2co26ofdo4
 alias kfn='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias rr='rm -rf'
 alias mirros='sudo reflector --latest 10 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
-alias rpoly='killall polybar | sh ~/.config/polybar/launch.sh --forest'
+alias rpoly='sh ~/.config/polybar/launch.sh --forest'
 alias btop='bpytop'
 
 eval "$(starship init zsh)"
@@ -57,6 +57,7 @@ if [ -f "$HOME/.config/bash.command-not-found" ]; then
     . "$HOME/.config/bash.command-not-found"
 fi
 
+rpoly
 neofetch
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

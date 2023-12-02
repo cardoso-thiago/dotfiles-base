@@ -1,7 +1,0 @@
-[Desktop Entry]
-Exec=sh ~/.config/polybar/launch.sh --forest
-Icon=
-Name=polybar
-Path=
-Terminal=False
-Type=Application
