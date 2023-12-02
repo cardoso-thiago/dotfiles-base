@@ -10,18 +10,18 @@ source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
 # Battery Info
-battery="`acpi -b | cut -d',' -f1 | cut -d':' -f1`"
-status="`acpi -b | cut -d',' -f1 | cut -d':' -f2 | tr -d ' '`"
-percentage="`acpi -b | cut -d',' -f2 | tr -d ' ',\%`"
-time="`acpi -b | cut -d',' -f3`"
+battery="Battery"
+status="`cat /sys/class/power_supply/BAT1/status`"
+percentage="`cat /sys/class/power_supply/BAT1/capacity`"
+time="`upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep -E "time to empty" | awk '{print $4,$5}'`"
 
-if [[ -z "$time" ]]; then
-	time=' Fully Charged'
+if [ "$time" ]; then
+	time=", remaining ${time}"
 fi
 
 # Theme Elements
 prompt="$status"
-mesg="${battery}: ${percentage}%,${time}"
+mesg="${battery}: ${percentage}%${time}"
 
 if [[ "$theme" == *'type-1'* ]]; then
 	list_col='1'
@@ -102,15 +102,14 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-	polkit_cmd="pkexec env PATH=$PATH DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 	if [[ "$1" == '--opt1' ]]; then
 		notify-send -u low " Remaining : ${percentage}%"
 	elif [[ "$1" == '--opt2' ]]; then
 		notify-send -u low "$ICON_CHRG Status : $status"
 	elif [[ "$1" == '--opt3' ]]; then
-		xfce4-power-manager-settings
+		kcmshell5 kcm_powerdevilprofilesconfig
 	elif [[ "$1" == '--opt4' ]]; then
-		${polkit_cmd} alacritty -e powertop
+		kcmshell5 kcm_energyinfo
 	fi
 }
 
