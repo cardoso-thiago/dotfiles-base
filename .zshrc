@@ -35,7 +35,7 @@ export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 export PATH=/home/cardoso/.local/bin:$PATH
 export TERM=xterm-256color
 
-alias ofd="xdg-open ."
+alias ofd="open_command ."
 alias lc='colorls -1'
 alias lca='colorls -1a'
 alias lcf='colorls -la'
@@ -46,7 +46,7 @@ alias ogr='open_command https://github.com/cardoso-thiago/${PWD##*/}'
 alias kbatt='upower -i /org/freedesktop/UPower/devices/battery_hid_dco2co26ofdo46obc_battery | grep percentage | lolcat'
 alias kfn='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias rr='rm -rf'
-alias mirros='sudo reflector --latest 10 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrors='sudo reflector --latest 10 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias rpoly='sh ~/.config/polybar/launch.sh --forest'
 alias btop='bpytop'
 
@@ -59,6 +59,9 @@ fi
 
 rpoly
 neofetch
+xset +fp /home/cardoso/.local/share/fonts
+xset fp rehash
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
