@@ -1,5 +1,5 @@
 #!/bin/sh
-updates=$(yay -Qu --devel --timeupdate | wc -l)
+updates=$(yay -Qu --timeupdate | wc -l)
 
 # Print the available updates if more than 0
 if [ "$updates" -gt 0 ]; then

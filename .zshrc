@@ -59,6 +59,7 @@ fi
 
 rpoly
 neofetch
+#Para funcionamento do siji view
 xset +fp /home/cardoso/.local/share/fonts
 xset fp rehash
 
