@@ -44,11 +44,14 @@ alias cls='clear; echo; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; ech
 alias goo='google'
 alias ogr='open_command https://github.com/cardoso-thiago/${PWD##*/}'
 alias kbatt='upower -i /org/freedesktop/UPower/devices/battery_hid_dco2co26ofdo46obc_battery | grep percentage | lolcat'
+alias mbatt='upower -i /org/freedesktop/UPower/devices/battery_hidpp_battery_0 | grep percentage | lolcat'
 alias kfn='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
 alias rr='rm -rf'
 alias mirrors='sudo reflector --latest 10 --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias rpoly='sh ~/.config/polybar/launch.sh --forest'
 alias btop='bpytop'
+alias yayu='yay -Syu --devel --timeupdate'
+alias yayc='yay -Scc'
 
 eval "$(starship init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
